@@ -1,0 +1,27 @@
+<?php
+/**
+ * Logo template override (otimizado)
+ */
+$logoAlt = $block->getLogoAlt();
+$logoWidth = $block->getLogoWidth();
+$logoHeight = $block->getLogoHeight();
+
+$logos = [
+    ['class' => 'logo-dark', 'src' => 'images/logo-dark.png'],
+    ['class' => 'logo-light', 'src' => 'images/logo-light.png'],
+];
+?>
+
+<a href="<?= $block->escapeUrl($block->getUrl('')) ?>"
+   title="<?= $block->escapeHtmlAttr($logoAlt) ?>"
+   class="logo">
+
+    <?php foreach ($logos as $logo): ?>
+        <img class="<?= $logo['class'] ?>"
+             src="<?= $block->getViewFileUrl($logo['src']) ?>"
+             alt="<?= $block->escapeHtmlAttr($logoAlt) ?>"
+             <?= $logoWidth ? 'width="' . $block->escapeHtmlAttr($logoWidth) . '"' : '' ?>
+             <?= $logoHeight ? 'height="' . $block->escapeHtmlAttr($logoHeight) . '"' : '' ?> />
+    <?php endforeach; ?>
+
+</a>
