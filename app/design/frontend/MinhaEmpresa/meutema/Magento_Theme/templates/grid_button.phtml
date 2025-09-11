@@ -1,0 +1,18 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var gridMain = document.querySelector('.grid-main-home');
+    var gridButton = document.querySelector('[data-main-button]');
+    
+    if (gridMain && gridButton) {
+        gridMain.insertAdjacentElement('afterend', gridButton);
+    } else {
+        console.warn('Grid main ou grid button não encontrado');
+    }
+});
+</script>
+
+<div data-main-button>
+<a id="grid-btn" href="http://local.sandboxm2/tenis.html">
+    ver todos
+</a>
+</div>

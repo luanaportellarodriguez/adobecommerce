@@ -1,6 +1,7 @@
 @dark: #263238;
 @light: #fff;
 @blue: #3396D3;
+@error: #ed8380;
 
 body {
 transition: background-color 0.3s ease;
@@ -12,24 +13,25 @@ body.black-background {
 background-color: @dark;
 color: @light;
 
-//filter no icone do carrinho
-.minicart-wrapper .action.showcart::before{
-filter: brightness(0) invert(1);
+  //filter no icone do carrinho
+  .minicart-wrapper .action.showcart::before{
+  filter: brightness(0) invert(1);
+  }
+
+  .title-button-text{
+    color: @light;
+  }
+
+  a, p, #grid-btn{
+    color: @light;
+  }
+  .action.tocart.primary{
+    background-color: @light;
+    border: none;
+    color: @dark;
+  }
 }
 
-.title-button-text{
-  color: @light;
-}
-
-a, p, #grid-btn{
-  color: @light;
-}
-.action.tocart.primary{
-  background-color: @light;
-  border: none;
-  color: @dark;
-}
-}
 //botão troca tema
 #toggle-theme-btn {
 background-color: transparent;
@@ -89,11 +91,16 @@ position: fixed;
 z-index: 10;
 width: 100%;
 border-bottom: none;
+height: 60px;
 }
 
 .page-header .header.panel{
 display: flex !important;
 align-items: center;
+}
+
+.page-header .panel.wrapper{
+  border-bottom: none;
 }
 
 .header.content{
@@ -114,8 +121,17 @@ width: 24px;
 height: 24px;
 }
 
+.minicart-wrapper .action.showcart.active:before{
+font-size: 0;
+}
+
 .block.block-search{
 width: -webkit-fill-available;
+padding: 0;
+}
+
+.panel.header{
+  padding: 10px 0;
 }
 
 .block-search .action.search:before {
@@ -128,31 +144,39 @@ filter: brightness(0) invert(1);
 }
 }
 
+.subscribe input.input-email,
 .minisearch input.input-text {
 background-color: transparent;
-color: white;
+color: @light;
 border: none;
-border-bottom: 1px solid white;
+border-bottom: 1px solid @light;
 outline: none;
 box-shadow: none;
 font-size: small;
 }
 
+.subscribe input::placeholder,
 .minisearch input::placeholder {
-color: white;
+color: @light;
 opacity: 1;
 }
 
 //Compatibilidade com navegadores antigos
-.minisearch input::-webkit-input-placeholder { color: white; }
-.minisearch input::-moz-placeholder { color: white; }
-.minisearch input:-ms-input-placeholder { color: white; }
-.minisearch input::-ms-input-placeholder { color: white; }
+.minisearch input::-webkit-input-placeholder { color: @light; }
+.minisearch input::-moz-placeholder { color: @light; }
+.minisearch input:-ms-input-placeholder { color: @light; }
+.minisearch input::-ms-input-placeholder { color: @light; }
 
+.subscribe input::-webkit-input-placeholder { color: @light; }
+.subscribe input::-moz-placeholder { color: @light; }
+.subscribe input:-ms-input-placeholder { color: @light; }
+.subscribe input::-ms-input-placeholder { color: @light; }
+
+.subscribe input:focus,
 .minisearch input:focus {
 outline: none;
 box-shadow: none;
-border-bottom: 2px solid @light;
+border-bottom: 1px solid @blue;
 }
 
 .title-button{
@@ -172,7 +196,6 @@ color: @dark;
   &:hover {
   text-decoration: none;
   }
-
 }
 
 .description-title-button-text{
@@ -197,7 +220,7 @@ border: none;
 border-radius: 2px;
 color: #263238;
 padding: 10px 16px;
-margin-top: 20px;
+margin-top: 40px;
 cursor: pointer;
 text-decoration: underline;
 font-weight: 700;
@@ -221,4 +244,171 @@ background-color: @dark;
 color: @light;
 border: none;
 border-radius: 0 2px 2px 0;
+}
+/* styles.css - Estilos atualizados */
+
+/* Transições para minicart e logo */
+.minicart-wrapper, .logo {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Estilos quando elementos estão no header panel */
+.minicart-header-panel, .logo-header-panel {
+  filter: brightness(0) invert(1);
+  top: 5px;
+}
+.minicart-header-panel.counter.qty{
+  background-color: @blue;
+}
+
+/* Ajustes específicos para a logo no header */
+.logo-header-panel {
+    max-height: 40px; /* Ajuste conforme necessário */
+    width: auto;
+    top: 0;
+}
+
+.logo-header-panel img {
+    max-height: 53px;
+    width: auto;
+}
+
+/* Estilos para transições suaves */
+.minicart-wrapper, .logo {
+    transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Layout flexível para o header panel quando elementos são movidos */
+.header.panel {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Garantir que o search mantenha sua posição */
+.header.panel .block-search {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Ajustes para elementos movidos */
+.header.panel .logo-header-panel {
+    order: 1;
+    flex-shrink: 0;
+}
+
+.header.panel .minicart-header-panel {
+    order: 3;
+    flex-shrink: 0;
+}
+
+.header.panel .block-search {
+    order: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header.panel {
+        gap: 10px;
+    }
+    
+    .logo-header-panel {
+        max-height: 30px;
+    }
+    
+    .logo-header-panel img {
+        max-height: 30px;
+    }
+    
+    .header.panel .block-search {
+        min-width: 150px;
+        flex: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .header.panel {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    
+    .logo-header-panel,
+    .minicart-header-panel {
+        align-self: center;
+    }
+}
+
+.minicart-wrapper .action.showcart .counter.qty{
+    border-radius: 50%;
+    position: relative;
+    top: -22px;
+    right: 18px;
+    border: solid 3px @light;
+    background-color: @light;
+    color: @dark;
+}
+
+.minicart-header-panel .action.showcart .counter.qty{
+color: @dark;
+}
+
+.minicart-wrapper .action.showcart .counter-number {
+    text-shadow: none;
+    font-weight: 700;
+}
+
+.pagebuilder-slider{
+  margin-top: 80px;
+}
+
+.home-slider button{
+  background-color: transparent;
+  color: @light;
+  border: 1px solid @light;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-radius: 2px;
+  font-weight: 400;
+}
+
+//newsletter
+.newsletter-container{
+background-color: @light;
+padding: 80px;
+
+.newsletter-subtitle{
+color: @dark;
+  text-align: center;
+    margin: 0 auto;
+}
+}
+
+.block.newsletter{
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.newsletter-title{
+font-size: 3rem;
+text-align: center;
+width: 100%;
+font-weight: 700;
+color: @dark;
+
+  &:hover {
+  text-decoration: none;
+  }
+}
+
+.action .subscribe .primary{
+  background-color: @dark;
+  color: @light;
+  border: 1px solid @dark;
+}
+
+input.mage-error, select.mage-error, textarea.mage-error{
+border: none;
+border-bottom: 1px solid @error !important;
 }

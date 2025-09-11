@@ -3,11 +3,17 @@
         <block class="Magento\Framework\View\Element\Template" name="toggle.theme.button" template="Magento_Theme::toggle_button.phtml" />
     </referenceContainer>
 
-    <referenceContainer name="main">
-        <block class="Magento\Framework\View\Element\Template" name="main.button" template="Magento_Theme::main_button.phtml" />
+    <referenceContainer name="main.content">
+        <container name="newsletter-container" htmlTag="div" htmlClass="newsletter-container">
+            <block class="Magento\Framework\View\Element\Template" 
+                   name="newsletter.title" 
+                   template="Magento_Theme::secondary-title.phtml"/>
+        </container>
     </referenceContainer>
 
     <move element="top.search" destination="header.panel" before="-"/>
     <move element="header.links" destination="footer.links" before="-"/>
     <move element="page.main.title" destination="footer.links" before="-"/>
+
+    <move element="form.subscribe" destination="newsletter-container" after="newsletter.title"/>
 </body>
