@@ -402,7 +402,7 @@ color: @dark;
   }
 }
 
-.action .subscribe .primary{
+.action.subscribe.primary{
   background-color: @dark;
   color: @light;
   border: 1px solid @dark;
@@ -411,4 +411,35 @@ color: @dark;
 input.mage-error, select.mage-error, textarea.mage-error{
 border: none;
 border-bottom: 1px solid @error !important;
+}
+
+
+//grid corrida
+/* No seu CSS principal */
+.grid-tenis-corrida .banner-product-item {
+    height: 100%;
+    min-height: 400px; /* Ajuste conforme necessário */
+}
+
+.grid-tenis-corrida .banner-product-item .product-item-details {
+    display: none !important;
+}
+
+.grid-tenis-corrida .slick-slide:first-child .product-item-details{
+  display: none;
+}
+
+.grid-tenis-corrida .slick-slide:first-child .product-image-photo{
+  margin: 30px 0 0 0;
+  height: 100%;
+}
+.grid-tenis-corrida .slick-slide:first-child span.product-image-wrapper{
+  height: 100%;
+  padding-bottom: 0 !important;
+}
+.grid-tenis-corrida .slick-slide:first-child .product-image-container {
+  height: 100%;
+}
+.grid-tenis-corrida .slick-slide:first-child .product-item-info {
+    height: 415px;
 }

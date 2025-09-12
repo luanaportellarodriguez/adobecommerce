@@ -559,6 +559,8 @@ return [
         'Magento_GiftCardGraphQl' => 1,
         'Fastly_Cdn' => 1,
         'Ho_Templatehints' => 1,
+        'MinhaLoja_GridProductBanner' => 1,
+        'MinhaLoja_Strava' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
         'Temando_ShippingRemover' => 1

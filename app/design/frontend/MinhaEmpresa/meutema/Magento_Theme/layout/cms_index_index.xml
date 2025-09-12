@@ -3,5 +3,18 @@
         <referenceContainer name="content">
             <block class="Magento\Framework\View\Element\Template" name="grid.button" template="Magento_Theme::grid_button.phtml"/>
         </referenceContainer>
+
+        <referenceContainer name="main.content">
+            <container name="newsletter-container" htmlTag="div" htmlClass="newsletter-container">
+                <block class="Magento\Framework\View\Element\Template" 
+                       name="newsletter.title" 
+                       template="Magento_Theme::newsletter-title.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" 
+                       name="newsletter.subtitle" 
+                       template="Magento_Theme::newsletter-subtitle.phtml"/>
+            </container>
+        </referenceContainer>
+
+        <move element="form.subscribe" destination="newsletter-container" after="newsletter.subtitle"/>
     </body>
 </page>
