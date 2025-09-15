@@ -30,7 +30,8 @@ class Index implements HttpGetActionInterface
                 }
                 .container {
                     max-width: 100%;
-                    height: 80vh;
+    height: 100vh;
+    width: 100vw;
                 }
                 iframe { 
                     width: 100%; 
@@ -48,9 +49,8 @@ class Index implements HttpGetActionInterface
             </style>
         </head>
         <body>
-            <h1>Strava Integration</h1>
             <div class="container">
-                <iframe src="https://www.strava.com.br" 
+                <iframe src="https://www.strava.com" 
                         frameborder="0" 
                         allowfullscreen
                         sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
