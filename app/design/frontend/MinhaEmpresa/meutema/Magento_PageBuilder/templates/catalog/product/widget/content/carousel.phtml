@@ -48,7 +48,12 @@ use Magento\Framework\App\Action\Action;
                     $imgTag = $matches[0];
                 }
                 ?>
-                <a href="<?= $block->escapeUrl($block->getProductUrl($_item)) ?>" class="product-item-photo product-banner-link">
+                <?php
+                // Tentar carregar o atributo custom_url especificamente
+                $_item->load($_item->getId(), ['custom_url']);
+                $customUrl = $_item->getData('custom_url');
+                ?>
+                <a href="<?= $block->escapeUrl($customUrl ?: $block->getProductUrl($_item)) ?>" class="product-item-photo product-banner-link" target="_blank" title="Custom URL: <?= $customUrl ?: 'NÃO DEFINIDA' ?> | Product URL: <?= $block->getProductUrl($_item) ?>">
                     <?= /* @noEscape */ $imgTag ?>
                 </a>
             <?php else: ?>
